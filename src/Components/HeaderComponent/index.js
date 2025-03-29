@@ -3,9 +3,11 @@ import {Header, Nav, Img, Navigation, Navigate, Button} from './styledComponents
 import { TiThMenu } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
 import {navItemArray}  from '../Data'
-
+import "@fontsource/poppins"; 
+import "@fontsource/poppins/400.css"; 
+import "@fontsource/poppins/400-italic.css"; 
 const HeaderComponent = () => {
-    const [navId, setNavId] = useState(1);
+    const [navId, setNavId] = useState(null);
     const [navbarToggleIcon, setNavbarToggleIcon] = useState(false);
     const onClickNavItem = (id) => {
         setNavId(id);
@@ -19,7 +21,7 @@ const HeaderComponent = () => {
             <Nav>
                 <Img alt='company-logo' src='https://res.cloudinary.com/da52fiag8/image/upload/v1742469988/FINAL_FINAL_LOGO-removebg-preview_e0th0v.png'/>
                 <Button onClick={onClickNavbarToggle}>{navbarToggleIcon?<ImCross />:<TiThMenu />}</Button>
-                <Navigation toggle={navbarToggleIcon}>
+                <Navigation onToggle={navbarToggleIcon}>
                     {
                         navItemArray.map((eachNavItem)=>(
                             <Navigate isactive={navId===eachNavItem.id} onClick={()=>{onClickNavItem(eachNavItem.id)}} key={eachNavItem.id}>{eachNavItem.navItemName}</Navigate> 

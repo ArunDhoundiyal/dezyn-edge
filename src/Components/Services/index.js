@@ -1,35 +1,25 @@
-import {
-    ServicesBgContainer, 
-    Heading, 
-    DisplayAllServicesContainer, 
-    DisplayServiceItem,  
-    Img, 
-    DisplayService
-} from './styledComponents';
-
-import { allServicesDataArray } from '../Data';
-
+import {ServicesBgContainer, Heading, ServicesCardContainer, EachService, ServiceHeading, Description} from './styledComponents';
+import {allServicesDataArray} from '../Data';
 const Services = () => {
-    return (
+    return(
         <ServicesBgContainer>
             <Heading>
-                Our Services – What We Do Best
+            Our Services
             </Heading>
-            <DisplayAllServicesContainer>
+            <ServicesCardContainer>
                 {
-                    allServicesDataArray.map(eachService => (
-                        <DisplayServiceItem key={eachService.id}>
-                            <Img 
-                                alt={`${eachService.serviceName}-${eachService.id}`} 
-                                src={eachService.logoImg} 
-                            />
-                            <DisplayService>{eachService.serviceName}</DisplayService>
-                        </DisplayServiceItem>
+                    allServicesDataArray.map((eachServices)=>(
+                        <EachService key={eachServices.id}>
+                            <ServiceHeading>
+                            {eachServices.serviceName}
+                            </ServiceHeading>
+                            <Description>{eachServices.description}</Description>
+                        </EachService>
                     ))
                 }
-            </DisplayAllServicesContainer>
+            </ServicesCardContainer>
         </ServicesBgContainer>
-    );
+    )
 }
 
-export default Services;
+export default Services;
